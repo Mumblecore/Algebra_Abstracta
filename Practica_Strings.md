@@ -231,7 +231,36 @@ int main()
 ### 11.-Dadas dos palabras, imprimir la que es lexicográficamente mayor.
 
 ```cpp
-int ga = 5;
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string a,b;
+
+    getline(cin, a);
+    getline(cin, b);
+
+    string c = (a.size() > b.size()) ? b : a;
+
+    for(int i = 0; i < c.size(); i++)
+    {
+        if(a[i] > b[i])
+        {
+            i = c.size();
+            cout << a;
+        }
+        else if(b[i] > a[i])
+        {
+            i = c.size();
+            cout << b;
+        }
+    }
+
+    return 0;
+}
 ```
 
 ### 12.-Crear una función que reciba un número N (N va de 1 a 10), y que escriba N números con valores que van de 1 a 1000 en un archivo llamado “numeros.txt”.
