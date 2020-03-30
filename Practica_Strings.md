@@ -122,3 +122,56 @@ int main()
 ```
 
 ### 7.-Recibir dos strings por entrada estándar, una frase y una palabra. Contar cuántas veces aparece la palabra en la frase.
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string f,p;
+
+    getline(cin, f);
+    getline(cin, p);
+
+    int n = 0;
+
+    for(int i = 0; i < (f.size() - p.size()); i++)
+    {
+        if (f.find(p) != string::npos)
+        {
+            f.erase(f.find(p), p.size());
+            n++;
+        }
+    }
+
+    cout << n;
+
+    return 0;
+}
+```
+8.-Recibir un string de longitud N e imprimir cada letra del string en una nueva línea usando iteradores.
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string s;
+    getline(cin, s);
+
+    string::iterator i;
+
+    for(i = s.begin(); i != s.end(); i++)
+    {
+        cout << *i << '\n';
+    }
+
+    return 0;
+}
+```
