@@ -12,11 +12,11 @@ int main()
     getline(cin,s);
 
     char a[s.length()];
-    s.copy(a, s.length(), 0);           	//string a char[]
+    s.copy(a, s.size(), 0);           	//string a char[]
 
     cout << "Este es un string: ";
 
-    for(int i = 0; i < s.length(); i++) 	//imprime char[]
+    for(int i = 0; i < s.size(); i++) 	//imprime char[]
     {
         cout << a[i];
     }
