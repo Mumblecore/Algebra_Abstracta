@@ -152,7 +152,7 @@ int main()
     return 0;
 }
 ```
-8.-Recibir un string de longitud N e imprimir cada letra del string en una nueva línea usando iteradores.
+### 8.-Recibir un string de longitud N e imprimir cada letra del string en una nueva línea usando iteradores.
 
 ```cpp
 #include <iostream>
@@ -174,4 +174,50 @@ int main()
 
     return 0;
 }
+```
+
+### 9.-Recibir dos strings por consola e imprimir un string que tenga al segundo string en la mitad el primer string. El primer string siempre tiene tamaño par.
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string s, t;
+    getline(cin, s);
+    getline(cin, t);
+
+    s.insert(s.size()/2, t);
+
+    cout << s;
+
+    return 0;
+}
+```
+
+### 10.-Recibir tres strings por consola, buscar todas las apariciones del segundo string en el primero y reemplazarlas por el tercer string recibido.
+
+```cpp
+int ga = 5;
+```
+
+### 11.-Dadas dos palabras, imprimir la que es lexicográficamente mayor.
+
+```cpp
+int ga = 5;
+```
+
+### 12.-Crear una función que reciba un número N (N va de 1 a 10), y que escriba N números con valores que van de 1 a 1000 en un archivo llamado “numeros.txt”.
+
+```cpp
+int ga = 5;
+```
+
+### 13.	Leer los números en el archivo “numeros.txt” de la pregunta 12 e imprimir la sumatoria.
+
+```cpp
+int ga = 5;
 ```
