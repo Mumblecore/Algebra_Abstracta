@@ -14,7 +14,7 @@ int main()
     char a[s.length()];
     s.copy(a, s.size(), 0);           	//string a char[]
 
-    cout << "Este es un string: ";
+    cout << "Este es un char[]: ";
 
     for(int i = 0; i < s.size(); i++) 	//imprime char[]
     {
@@ -26,7 +26,7 @@ int main()
     {
         t += a[i];
     }
-    cout << "\nEste es un char[]: " << t;	//imprime string
+    cout << "\nEste es un string: " << t;	//imprime string
 
     return 0;
 }
@@ -60,15 +60,36 @@ int main()
     {
         if(s[i] > 64 && s[i] < 91)
         {
-            s[i] += 32;
+            s[i] += 32;                         //Mayúscula a Minúscula
         }
         else if(s[i] > 96 && s[i] < 123)
         {
-            s[i] -= 32;
+            s[i] -= 32;                         //Minúscula a Mayúscula
         }
     }
     
     cout << s;
+
+    return 0;
+}
+```
+### 4.-Recibir dos números por consola en variables tipo entero, luego construir un objeto string que concatene el primer número seguido del segundo número. Imprimir la cadena resultante, y en una nueva línea su valor multiplicado por 2. Usar funciones para convertir de string a entero y visceversa.
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    int a,b;
+    cin >> a;
+    cin >> b;
+
+    string s(to_string(a)+to_string(b));
+
+    cout << s << "\n" << stoi(s)*2;
 
     return 0;
 }
