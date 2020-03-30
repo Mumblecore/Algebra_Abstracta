@@ -1,6 +1,6 @@
 ### 1.-Convertir un objeto string a un array de tipo char, y viceversa.
 
-```cpp {cmd=node .line-numbers}
+```cpp
 #include <iostream>
 #include <string>
 
@@ -31,3 +31,15 @@ int main()
     return 0;
 }
 ```
+
+### 2.-¿Cuál es la diferencia entre la función `capacity` y la función `size` de la clase string?
+
+La función `size` retorna el numero de caracteres no nulos que contiene la string, mientras que la función `capacity` retorna la cantidad máxima de caracteres que puede almacenar el string, en otras palabras la capacidad de este. Esta puede ser igual o mayor al numero que tiene, lo que permite las operaciones que añaden caracteres a este.
+
+Ejem:
+```cpp
+string s = hola;
+cout << s.size();   //imprime 4
+cout << s.capacity;  //imprime 15
+```
+
