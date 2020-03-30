@@ -42,4 +42,8 @@ string s = hola;
 cout << s.size();   //imprime 4
 cout << s.capacity;  //imprime 15
 ```
+### 5.-Crear un objeto string que esté formado por 1000 caracteres ‘a’, escribiendo una sola línea de código.
 
+```cpp
+string s(1000, 'a');
+```
