@@ -201,7 +201,31 @@ int main()
 ### 10.-Recibir tres strings por consola, buscar todas las apariciones del segundo string en el primero y reemplazarlas por el tercer string recibido.
 
 ```cpp
-int ga = 5;
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string s,a,b;
+
+    getline(cin, s);
+    getline(cin, a);
+    getline(cin, b);
+
+    for(int i = 0; i < a.size(); i++)
+    {
+        if (s.find(a) != string::npos)
+        {
+            s.replace(s.find(a), a.size(), b);
+        }
+    }
+
+    cout << s;
+
+    return 0;
+}
 ```
 
 ### 11.-Dadas dos palabras, imprimir la que es lexicográficamente mayor.
