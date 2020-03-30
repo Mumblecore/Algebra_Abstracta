@@ -100,3 +100,25 @@ int main()
 ```cpp
 string s(1000, 'a');
 ```
+
+### 6.-Convertir la cadena: “Yo desaprobe el curso de Algebra Abstracta” a la cadena: “Yo aprobe el curso de Algebra Abstracta”. 
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string s("Yo desaprobe el curso de Algebra Abstracta");
+
+    s.erase(3, 3);
+
+    cout << s;
+
+    return 0;
+}
+```
+
+### 7.-Recibir dos strings por entrada estándar, una frase y una palabra. Contar cuántas veces aparece la palabra en la frase.
