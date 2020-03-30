@@ -42,6 +42,38 @@ string s = hola;
 cout << s.size();   //imprime 4
 cout << s.capacity;  //imprime 15
 ```
+
+### 3.-Convertir las letras de un string de minúsculas a mayúsculas, y las mayúsculas a minúsculas.
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string s;
+    getline(cin, s);
+    
+    for(int i = 0; i < s.size(); i++)
+    {
+        if(s[i] > 64 && s[i] < 91)
+        {
+            s[i] += 32;
+        }
+        else if(s[i] > 96 && s[i] < 123)
+        {
+            s[i] -= 32;
+        }
+    }
+    
+    cout << s;
+
+    return 0;
+}
+```
+
 ### 5.-Crear un objeto string que esté formado por 1000 caracteres ‘a’, escribiendo una sola línea de código.
 
 ```cpp
