@@ -266,11 +266,52 @@ int main()
 ### 12.-Crear una función que reciba un número N (N va de 1 a 10), y que escriba N números con valores que van de 1 a 1000 en un archivo llamado “numeros.txt”.
 
 ```cpp
-int ga = 5;
+void numeros(int n)
+{
+    if(n>0 && n<11)
+    {
+        ofstream nums_o;
+        nums_o.open("numeros.txt", ios::out);
+
+        while(n--)
+        {
+            nums_o << rand()%1000 + 1 << "\n";
+        }
+    }
+}
 ```
 
 ### 13.	Leer los números en el archivo “numeros.txt” de la pregunta 12 e imprimir la sumatoria.
 
 ```cpp
-int ga = 5;
+#include <iostream>
+#include <stdlib.h>
+#include <fstream>
+
+using namespace std;
+
+void numeros(int n);
+
+int main()
+{
+    int n;
+
+    cout << "Ingrese un numero del 1 al 10: ";
+    cin >> n;
+
+    ifstream nums_i;
+    nums_i.open("numeros.txt", ios::in);
+
+    //SUMATORIA
+
+    int x;
+    int s;
+
+    while (nums_i >> x) {
+        s += x;
+    }
+
+    cout << s << "\n";
+
+   
 ```
