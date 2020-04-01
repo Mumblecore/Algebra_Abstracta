@@ -138,19 +138,16 @@ int main()
 
     int n = 0;
 
-    for(int i = 0; i < (f.size() - p.size()); i++)
+    for(int pos = f.find(p); pos != string::npos; pos = f.find(p, pos + 1);)
     {
-        if (f.find(p) != string::npos)
-        {
-            f.erase(f.find(p), p.size());
-            n++;
-        }
+        n++;
     }
 
     cout << n;
 
     return 0;
 }
+
 ```
 ### 8.-Recibir un string de longitud N e imprimir cada letra del string en una nueva línea usando iteradores.
 
@@ -214,13 +211,10 @@ int main()
     getline(cin, s);
     getline(cin, a);
     getline(cin, b);
-
-    for(int i = 0; i < a.size(); i++)
+    
+    for(int pos = s.find(a); pos != string::npos; pos = s.find(a, pos + 1))
     {
-        if (s.find(a) != string::npos)
-        {
-            s.replace(s.find(a), a.size(), b);
-        }
+        s.replace(s.find(a), a.size(), b);
     }
 
     cout << s;
