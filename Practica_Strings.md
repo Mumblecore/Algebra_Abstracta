@@ -21,11 +21,7 @@ int main()
         cout << a[i];
     }
 
-    string t;
-    for(int i = 0; a[i] != '\0'; i++)   	//char[] a string
-    {
-        t += a[i];
-    }
+    string t(a);                        //char[] a string
     cout << "\nEste es un string: " << t;	//imprime string
 
     return 0;
