@@ -95,3 +95,62 @@ int main ()
   return 0;
 }
 ```
+
+### 18.27
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+bool asc(string a, string b)
+{
+    return (a.compare(b) < 0);
+}
+
+bool dsc(string a, string b)
+{
+    return (a.compare(b) > 0);
+}
+
+void selectionSort(string a[], int n, bool(*compara)(string, string))  
+{  
+    int menOmay;  
+  
+    for (int i = 0; i < n-1; i++)  
+    {  
+        menOmay = i;  
+        for (int j = i+1; j < n; j++)  
+            if (!(*compara)(a[menOmay],a[j])){
+                menOmay = j;  
+            }
+        swap(a[menOmay], a[i]);  
+    }  
+} 
+
+int main ()
+{
+    string s[5] = {"hola", "alan", "captura", "cama", "acido"};
+
+    for(int i = 0; i < 5; i++)
+    {
+        cout << s[i] << " ";
+    }
+
+    int orden;
+    cout << "\nOrden(1 = ascendente / 0 = descendente) ";
+    cin >> orden;
+
+    (orden) ? selectionSort(s,5,asc) : selectionSort(s,5,dsc);
+
+    for(int i = 0; i < 5; i++)
+    {
+        cout << s[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+```
