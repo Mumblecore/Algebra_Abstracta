@@ -77,7 +77,7 @@ int main()
 
 ### 18.22
 
-```
+```cpp
 #include <iostream>
 #include <string>
 
