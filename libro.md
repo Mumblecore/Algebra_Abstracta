@@ -17,6 +17,8 @@ int main()
     c = a + " " + b;
 
     cout << "\nHola " << c << "\n";
+    
+    return 0;
 }
 ```
 ### 18.19
@@ -35,5 +37,7 @@ int main()
     s.insert(s.size()/2, "******");
 
     cout << s << endl;
+    
+    return 0;
 }
 ```
