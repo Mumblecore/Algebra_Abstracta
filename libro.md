@@ -17,12 +17,15 @@ que escriba un programa para lograr esto.
 using namespace std;
 
 /*
-Esta funcion sirve tanto para codificar como para decodificar mensajes en rot13, dado que al tener el alfabeto 26 letras,
+Este programa sirve tanto para codificar como para decodificar mensajes en rot13, dado que al tener el alfabeto 26 letras,
 al rotar las letras 13 espacios dos veces, se voleria al lugar de origen. Un mensaje ya cifrado saldria como uno sin cifrar
 */
 
-string rot13(string s)
+int main ()
 {
+    string s;
+    getline(cin,s);
+
     for(int i = 0; i < s.size(); i++)			//loop q codifica char por char
     {
         if(isalpha(s[i]))				//verifica si es alfabetica(numeros y signos no)
@@ -37,14 +40,6 @@ string rot13(string s)
             
         }
     }
-}
-
-int main ()
-{
-    string s;
-    getline(cin,s);
-
-    rot13(s);
 
     cout << s << endl;
 
