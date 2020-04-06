@@ -54,6 +54,87 @@ int main()
     return 0;
 }
 ```
+### 18.12
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void dibujar(string s, int n)
+{
+    system("cls");              //limpia la pantalla
+
+    cout << "Adivine la palabra:\t" << s << "\n";           //muestra "XXXXXXX"
+
+    string ahorcado[7] =
+    {
+        "\t o\n",
+        "\t/","|","\\ \n",
+        "\t | \n",
+        "\t/ ","\\ \n"
+    };
+
+    for(int i = 0; i < n; i++)
+    {
+        cout <<ahorcado[i];             //imprime las partes del cuerpo segun el numero de intentos incorrectos
+    }
+}
+int main()
+{
+    string p("gato");
+    string o(p.size(), 'x');
+    string c;
+
+    cout << "Adivine la palabra:\t" << o << "\n\n";
+    int int_ = 0;       //nro de intentos
+    int inco = 0;       //nro de intentos incorrectos
+
+    bool juego = 1;     //controla si el ususario sigue jugando
+    while(juego)        //loop del juego
+    {
+        cout << "\nIngrese: ";
+        cin >> c;
+
+        if (p.find(c) != string::npos)              //si encuentra lo ingresado por el usuario:
+        {
+            for(int pos = p.find(c); pos != string::npos; pos = p.find(c, pos + 1))
+            {
+                o.replace(pos, c.size(), c);        //reemplaza todas las conicidencias
+            }
+        }
+        else
+        {
+            inco++;
+        }
+        int_++;
+
+        dibujar(o,inco);    //llama a la funcion para limpiar la pantalla y preparar la siguiente entrada
+
+        if(p==o || inco==7)     //revisa cada jugada si se perdio o gano
+        {
+            cout << "\nNumero de intentos: " << int_;   //muestra el nro de intentos cque le llevo al jugador
+            cout << ((inco==7) ? "\nPerdiste." : "\nFelicidades!!! Adivino mi palabra." );
+            jugar:
+                cout << "Desea jugar otra vez? si/no ";
+                string rpta;
+                cin >> rpta;
+
+                if(rpta == "si"){   //asigna 0 a las variables y vuelve XXX a la string a comparar
+                    int_ = 0;
+                    inco = 0;
+                    o.assign(p.size(), 'x');
+                    dibujar(o,inco);
+                }else if(rpta == "no")
+                    juego = 0;
+                else
+                    goto jugar;     //si no entiende la respuesta vuelve a preguntar
+        }
+    }
+	return 0;
+}
+```
 
 ### 18.19
 
