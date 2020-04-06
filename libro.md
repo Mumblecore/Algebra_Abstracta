@@ -130,14 +130,20 @@ void selectionSort(string a[], int n, bool(*compara)(string, string))
     }  
 } 
 
+void printArray(string a[], int n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+}
+
 int main ()
 {
     string s[5] = {"hola", "alan", "captura", "cama", "acido"};
 
-    for(int i = 0; i < 5; i++)
-    {
-        cout << s[i] << " ";
-    }
+    printArray(s,5);
 
     int orden;
     cout << "\nOrden(1 = ascendente / 0 = descendente) ";
@@ -145,11 +151,7 @@ int main ()
 
     (orden) ? selectionSort(s,5,asc) : selectionSort(s,5,dsc);
 
-    for(int i = 0; i < 5; i++)
-    {
-        cout << s[i] << " ";
-    }
-    cout << endl;
+    printArray(s,5);
 
     return 0;
 }
