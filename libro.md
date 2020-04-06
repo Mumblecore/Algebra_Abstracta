@@ -1,3 +1,36 @@
+### 18.7
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main ()
+{
+    string s;
+    getline(cin,s);
+
+    for(int i = 0; i < s.size(); i++)
+    {
+        if(isalpha(s[i]))
+        {
+            if(s[i] > 96)
+            {
+                s[i] += ((s[i] < 109) ? 13 : -13);
+            }else
+            {
+                s[i] += ((s[i] < 77) ? 13 : -13);
+            }
+            
+        }
+    }
+
+    cout << s << endl;
+
+    return 0;
+}
+```
 ### 18.11
 
 ```cpp
