@@ -1,4 +1,14 @@
-### 18.7
+### 18.7 
+Cierta información en Internet se puede cifrar con un algoritmo simple conocido como “rot13”, el
+cual rota cada carácter 13 posiciones en el alfabeto. Así, 'a' corresponde a 'n', y 'x' corresponde a 'k'. rot13 es un ejemplo
+del cifrado de clave simétrica. Con este tipo de cifrado, tanto el que cifra como el que descifra utilizan la misma clave.
+
+a) Escriba un programa que cifre un mensaje usando rot13.
+b) Escriba un mensaje que descifre el mensaje codifi cado usando 13 como la clave.
+c) Después de escribir los programas de los incisos (a) y (b), responda brevemente a la siguiente pregunta: si no cono-
+ciera la clave para el inciso (b), ¿qué tan difícil cree usted que sería quebrantar el código? ¿Qué pasaría si tuviera
+acceso a un poder de cómputo considerable ( por ejemplo, supercomputadoras)? En el ejercicio 18.26 le pediremos
+que escriba un programa para lograr esto.
 
 ```cpp
 #include <iostream>
@@ -6,25 +16,35 @@
 
 using namespace std;
 
+/*
+Esta funcion sirve tanto para codificar como para decodificar mensajes en rot13, dado que al tener el alfabeto 26 letras,
+al rotar las letras 13 espacios dos veces, se voleria al lugar de origen. Un mensaje ya cifrado saldria como uno sin cifrar
+*/
+
+string rot13(string s)
+{
+    for(int i = 0; i < s.size(); i++)			//loop q codifica char por char
+    {
+        if(isalpha(s[i]))				//verifica si es alfabetica(numeros y signos no)
+        {
+            if(s[i] > 96)
+            {
+                s[i] += ((s[i] < 109) ? 13 : -13);	//cod para minusculas
+            }else
+            {
+                s[i] += ((s[i] < 77) ? 13 : -13);	//cod para mayusculas
+            }
+            
+        }
+    }
+}
+
 int main ()
 {
     string s;
     getline(cin,s);
 
-    for(int i = 0; i < s.size(); i++)
-    {
-        if(isalpha(s[i]))
-        {
-            if(s[i] > 96)
-            {
-                s[i] += ((s[i] < 109) ? 13 : -13);
-            }else
-            {
-                s[i] += ((s[i] < 77) ? 13 : -13);
-            }
-            
-        }
-    }
+    rot13(s);
 
     cout << s << endl;
 
@@ -32,6 +52,8 @@ int main ()
 }
 ```
 ### 18.11
+Escriba un programa que introduzca por separado un primer nombre y un apellido, y que concatene los dos en un
+nuevo objeto string.
 
 ```cpp
 #include <iostream>
@@ -55,6 +77,7 @@ int main()
 }
 ```
 ### 18.12
+Escriba un programa para jugar al ahorcado.
 
 ```cpp
 #include <iostream>
@@ -137,6 +160,7 @@ int main()
 ```
 
 ### 18.19
+Escriba un programa que inserte los caracteres "******" en la mitad exacta de un objeto string.
 
 ```cpp
 #include <iostream>
@@ -158,7 +182,8 @@ int main()
 ```
 
 ### 18.21
-
+Escriba un programa que introduzca una línea de texto, reemplace todos los signos de puntuación con espacios y utilice
+la función strtok de la biblioteca de cadenas estilo C para dividir el objeto string en palabras individuales (tokens).
 ```cpp
 #include <iostream>
 #include <string>
@@ -190,7 +215,7 @@ int main()
 ```
 
 ### 18.22
-
+Escriba un programa que introduzca una línea de texto y la imprima al revés. Use iteradores en su solución.
 ```cpp
 #include <iostream>
 #include <string>
@@ -211,7 +236,8 @@ int main ()
 ```
 
 ### 18.27
-
+Escriba una versión de la rutina de ordenamiento por selección (fi gura 8.28) que ordene objetos string. Use la función
+swap en su solución.
 ```cpp
 #include <iostream>
 #include <string>
