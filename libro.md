@@ -77,6 +77,7 @@ Escriba un programa para jugar al ahorcado.
 ```cpp
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
@@ -101,7 +102,8 @@ void dibujar(string s, int n)
 }
 int main()
 {
-    string p("gato");
+    string pal[5] = {"gato", "perro", "caballo", "lanza", "tarea"};
+    string p = pal[rand()%5];
     string o(p.size(), 'x');
     string c;
 
@@ -142,6 +144,7 @@ int main()
                 if(rpta == "si"){   //asigna 0 a las variables y vuelve XXX a la string a comparar
                     int_ = 0;
                     inco = 0;
+                    p = pal[rand()%5];
                     o.assign(p.size(), 'x');
                     dibujar(o,inco);
                 }else if(rpta == "no")
