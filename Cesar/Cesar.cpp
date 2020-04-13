@@ -1,22 +1,48 @@
-#ifndef CESAR_H
-#define CESAR_H
+#include "Cesar.h"
 
-#include <string>
-
-using namespace std;
-
-class Cesar
+Cesar::Cesar()
 {
-    public:
-        Cesar();
-        virtual ~Cesar();
+    alf = "abcdefghijklmnopqrstuvwxyz";
+    clave = 4;
+}
 
-        string cif(string);
-        string des(string);
-        string alf;
+Cesar::~Cesar()
+{
+    //dtor
+}
 
-    private:
-        int clave;
-};
+string Cesar::cif(string msg)
+{
+    string msg_cif;
 
-#endif // CESAR_H
+    for(int i = 0; i < msg.size(); i++)
+    {
+        int lpos = alf.find(msg[i]);
+        if(lpos != string::npos)
+        {
+            msg_cif += alf[(lpos + clave)%alf.size()];
+        }else{
+            msg_cif += msg[i];
+        }
+    }
+
+    return msg_cif;
+}
+
+string Cesar::des(string msg_cif)
+{
+    string msg_des;
+
+    for(int i = 0; i < msg_cif.size(); i++)
+    {
+        int lpos = alf.find(msg_cif[i]);
+        if(lpos != string::npos)
+        {
+            msg_des += alf[(lpos - clave)%alf.size()];
+        }else{
+            msg_des += msg_cif[i];
+        }
+    }
+
+    return msg_des;
+}
