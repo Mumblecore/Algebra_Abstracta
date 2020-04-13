@@ -2,7 +2,7 @@
 
 Cesar::Cesar()
 {
-    alf = "abcdefghijklmnopqrstuvwxyz";
+    alf = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
     clave = 4;
 }
 
@@ -20,7 +20,7 @@ string Cesar::cif(string msg)
         int lpos = alf.find(msg[i]);
         if(lpos != string::npos)
         {
-            msg_cif += alf[(lpos + clave)%alf.size()];
+            msg_cif += alf[(lpos + (clave * 2)) % alf.size()];
         }else{
             msg_cif += msg[i];
         }
@@ -38,7 +38,7 @@ string Cesar::des(string msg_cif)
         int lpos = alf.find(msg_cif[i]);
         if(lpos != string::npos)
         {
-            msg_des += alf[(lpos - clave)%alf.size()];
+            msg_des += alf[(lpos - (clave * 2)) % alf.size()];
         }else{
             msg_des += msg_cif[i];
         }
