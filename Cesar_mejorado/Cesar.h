@@ -8,7 +8,7 @@ using namespace std;
 class Cesar
 {
     public:
-        Cesar(c);
+        Cesar(int);
         virtual ~Cesar();
 
         string cif(string);
