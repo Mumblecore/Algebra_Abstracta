@@ -49,7 +49,7 @@ string Cesar::des(string msg_cif)
             }
             msg_des += alf[lpos - clave];
         }else{
-            msg_des += msg[i];
+            msg_des += msg_cif[i];
         }
     }
 
