@@ -2,7 +2,7 @@
 
 Vigenere::Vigenere()
 {
-    alf = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+    alf = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ,.";
 }
 
 Vigenere::~Vigenere()
@@ -12,19 +12,25 @@ Vigenere::~Vigenere()
 
 void Vigenere::setClave(string c)
 {
-    clave = c
+    clave = c;
+}
+
+string Vigenere::getClave()
+{
+    return clave;
 }
 
 string Vigenere::cif(string msg)
 {
     string msg_cif;
-
+    int lpos,cpos;
     for(int i = 0; i < msg.size(); i++)
     {
-        int lpos = alf.find(msg[i]);
+        lpos = alf.find(msg[i]);
+        cpos = alf.find(clave[i%clave.size()]);
         if(lpos != string::npos)
         {
-            msg_cif += alf[(lpos + alf.find(clave[i%clave.size()]))%alf.size()];
+            msg_cif += alf[(lpos + cpos)%alf.size()];
         }else{
             msg_cif += msg[i];
         }
@@ -36,13 +42,14 @@ string Vigenere::cif(string msg)
 string Vigenere::des(string msg_cif)
 {
     string msg_des;
-
+    int lpos,cpos;
     for(int i = 0; i < msg_cif.size(); i++)
     {
-        int lpos = alf.find(msg_cif[i]);
+        lpos = alf.find(msg_cif[i]);
+        cpos = alf.find(clave[i%clave.size()]);
         if(lpos != string::npos)
         {
-            msg_cif += alf[(lpos - alf.find(clave[i%clave.size()]))%alf.size()];
+            msg_des += alf[(lpos - cpos)%alf.size()];
         }else{
             msg_des += msg_cif[i];
         }
