@@ -23,7 +23,7 @@ string Cesar::cif(string msg)
         {
             if(lpos + clave > alf.size())
             {
-               lpos -= alf.size()
+               lpos -= alf.size();
             }
             msg_cif += alf[lpos + clave];
         }else{
@@ -45,7 +45,7 @@ string Cesar::des(string msg_cif)
         {
             if(lpos + clave > alf.size())
             {
-               lpos += alf.size()
+               lpos += alf.size();
             }
             msg_des += alf[lpos - clave];
         }else{
