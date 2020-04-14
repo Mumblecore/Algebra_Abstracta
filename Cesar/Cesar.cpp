@@ -1,9 +1,9 @@
 #include "Cesar.h"
 
-Cesar::Cesar(int c)
+Cesar::Cesar()
 {
     alf = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
-    clave = c;
+    clave = 4;
 }
 
 Cesar::~Cesar()
