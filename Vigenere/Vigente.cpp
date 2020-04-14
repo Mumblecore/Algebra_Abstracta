@@ -1,23 +1,14 @@
 #include "Vigenere.h"
 
-Vigenere::Vigenere()
+Vigenere::Vigenere(string c)
 {
     alf = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ,.";
+    clave = c;
 }
 
 Vigenere::~Vigenere()
 {
     //dtor
-}
-
-void Vigenere::setClave(string c)
-{
-    clave = c;
-}
-
-string Vigenere::getClave()
-{
-    return clave;
 }
 
 string Vigenere::cif(string msg)
