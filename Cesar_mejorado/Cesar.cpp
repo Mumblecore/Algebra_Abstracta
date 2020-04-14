@@ -43,7 +43,7 @@ string Cesar::des(string msg_cif)
         int lpos = alf.find(msg_cif[i]);
         if(lpos != string::npos)
         {
-            if(lpos + clave > alf.size())
+            if(lpos - clave < 0)
             {
                lpos += alf.size();
             }
