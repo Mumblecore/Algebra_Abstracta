@@ -2,6 +2,10 @@
 
 void divInt(int a, int n)
 {
+    if(n < 1){
+        std::cout << "El divisor debe ser negativo" << std::endl;
+        return;
+    }
     int q = a/n;
     int r = a%n;
 
