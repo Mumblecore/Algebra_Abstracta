@@ -1,0 +1,24 @@
+#include <iostream>
+
+void divInt(int a, int n)
+{
+    int q = a/n;
+    int r = a%n;
+
+    if(a<0){
+        q--;
+        r += n;
+    }
+
+    std::cout << "q = " << q << std::endl;
+    std::cout << "r = " << r << std::endl;
+}
+
+int main()
+{
+    int a,n;
+    std::cin >> a >> n;
+    std::cout << std::endl;
+    divInt(a, n);
+    return 0;
+}
