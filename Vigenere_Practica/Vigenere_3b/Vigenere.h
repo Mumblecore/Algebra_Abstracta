@@ -32,14 +32,8 @@ string Vigenere::cif(string msg)
     {
         lpos = alf.find(msg[i]);
         cpos = alf.find(clave[i%clave.size()]);
-        if(lpos != string::npos)
-        {
-            msg_cif += alf[(lpos + cpos)%alf.size()];
-        }
-        else
-        {
-            msg_cif += msg[i];
-        }
+
+        msg_cif += alf[(lpos + cpos)%alf.size()];
     }
 
     return msg_cif;
@@ -53,18 +47,8 @@ string Vigenere::des(string msg_cif)
     {
         lpos = alf.find(msg_cif[i]);
         cpos = alf.find(clave[i%clave.size()]);
-        if(lpos != string::npos)
-        {
-            if(lpos - cpos >= 0){
-                msg_des += alf[(lpos - cpos)%alf.size()];
-            }else{
-                msg_des += alf[(lpos - cpos + alf.size())%alf.size()];
-            }
-        }
-        else
-        {
-            msg_des += msg_cif[i];
-        }
+
+        msg_des += alf[(lpos - cpos + alf.size())%alf.size()];
     }
 
     return msg_des;
