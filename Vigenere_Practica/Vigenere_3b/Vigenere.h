@@ -4,7 +4,6 @@
 #include <string>
 
 using namespace std;
-using namespace string;
 
 class Vigenere
 {
@@ -28,10 +27,13 @@ string Vigenere::cif(string msg)
 {
     string msg_cif;
     int lpos,cpos;
-    for(int i = 0; i < msg.size(); i++)
+    for(int i = 0, ic = 0; i < msg.size(); i++,ic++)
     {
+        if(ic >= clave.size())
+            ic -= clave.size();
+
         lpos = alf.find(msg[i]);
-        cpos = alf.find(clave[i%clave.size()]);
+        cpos = alf.find(clave[ic]);
 
         msg_cif += alf[(lpos + cpos)%alf.size()];
     }
@@ -43,10 +45,13 @@ string Vigenere::des(string msg_cif)
 {
     string msg_des;
     int lpos,cpos;
-    for(int i = 0; i < msg_cif.size(); i++)
+    for(int i = 0, ic = 0; i < msg_cif.size(); i++, ic++)
     {
+        if(ic >= clave.size())
+            ic -= clave.size();
+
         lpos = alf.find(msg_cif[i]);
-        cpos = alf.find(clave[i%clave.size()]);
+        cpos = alf.find(clave[ic]);
 
         msg_des += alf[(lpos - cpos + alf.size())%alf.size()];
     }
