@@ -2,9 +2,9 @@
 #define VIGENERE_H
 
 #include <string>
-#include <iostream>
 
 using namespace std;
+using namespace string;
 
 class Vigenere
 {
