@@ -63,13 +63,13 @@ int div(ZZ a, int n)
     return q;
 }
 
-int mod(ZZ a, int n)
+bool mod(ZZ a, int n)
 {
-    ZZ m = (a - (div(a,n)*n));
-    long m_i;
-    conv(m,m_i);
-
-    return m_i;
+    if(a == (div(a,n)*n))
+    {
+        return false;
+    }
+    return true;
 }
 
 #endif
