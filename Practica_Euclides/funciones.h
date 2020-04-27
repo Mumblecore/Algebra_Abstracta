@@ -2,16 +2,13 @@
 #define FUNCIONES_H
 
 #include <iostream>
-#include <NTL/ZZ.h>
-
-using namespace std;
-using namespace NTL;
+#include "extensiones.h"
 
 ZZ foo1(ZZ a, ZZ b)
 {
     int c = 1;
     while(true){
-        ZZ r = a % b;
+        ZZ r = mod(a,b);
         cout << "vuelta: " << c++ << "\ta: " << a << "\tb: " << b << "\tr: " << r << endl;
         if(r == 0)
         {
@@ -26,7 +23,7 @@ ZZ foo2(ZZ a, ZZ b)
 {
     int c = 1;
     while(true){
-        ZZ r = a % b;
+        ZZ r = mod(a,b);
         cout << "vuelta: " << c++ << "\ta: " << a << "\tb: " << b << "\tr: " << r << endl;
         if(r == 0)
         {
@@ -51,7 +48,7 @@ ZZ foo3(ZZ a, ZZ b)
         cont_r = 1;
         return a;
     }
-    return foo3(b,a % b);
+    return foo3(b,mod(a,b));
 }
 
 ZZ foo4(ZZ a, ZZ b)
