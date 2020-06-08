@@ -15,7 +15,7 @@ void primos(Vec<ZZ>& a, ZZ n)
     for(ZZ i(5); i < n; i+=2)
     {
         for(long j = 1; i >= a[j] * a[j]; j++)
-            if(nmod(i, a[j]) == 0){
+            if(i % a[j] == 0){
                 primo = false;
                 break;
             }
@@ -34,7 +34,7 @@ void primos(int a[], int n)
     bool primo = true;
     for(int i = 5; i < n; i+=2)
     {
-        for(int j = 1; j < tam; j++)
+        for(int j = 1; i >= a[j] * a[j]; j++)
             if(mod(i, a[j]) == 0){
                 primo = false;
                 j = tam;
