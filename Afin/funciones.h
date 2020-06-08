@@ -23,29 +23,6 @@ int gcd(int a, int b)
     return b;
 }
 
-// int inversa(int a, int b)
-// {
-//     int s, r, q, t, s2 = 0;
-//     int s1(1);
-//     int r2(b);
-//     while(r2 > 0)
-//     {
-//         std::cout << "i1\n";
-//         q = a/r2;
-//         t = q * r2;
-//         r = a - t;
-//         a = r2;
-//         r2 = r;
-//         t = q * s2;
-//         s = s1 - t;
-//         s1 = s2;
-//         s2 = s;
-//     }
-//     if(s1 < 0)
-//         s1+=b;
-//     return s1;
-// }
-
 int inversa(int a, int b)
 {
     int t, q, s2 = 0;
