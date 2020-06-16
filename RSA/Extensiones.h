@@ -61,7 +61,7 @@ ZZ primo()
     auto t1 = Clock::now();
     auto t2 = Clock::now();
     srand(std::chrono::duration_cast<Nano>(t1-t2).count());
-    long t = mod(rand(), 5000000);
+    long t = mod(rand(), 500000);
     if(t<0)
         t = -t;
     ZZ zt(t);
@@ -107,7 +107,7 @@ ZZ gcd(ZZ a, ZZ b)
     }
     return b;
 }
-
+//div, mul y sum son funciones tipo ensamblador nativas de la libreria ntl se utilizan debido a lo recomendado en la documentacion oficial de la libreria para obtener la mejor performance https://www.shoup.net/ntl/doc/tour-tips.html
 ZZ inversa(ZZ a, ZZ b)
 {
     ZZ q, t, s2;

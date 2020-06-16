@@ -1,24 +1,17 @@
-#include "Extensiones.h"
+#include "Rsa.h"
 
 using namespace std;
 
 int main()
 {
-    // ZZ a,b,c;
-    // int n = 40000;
-    // auto t1 = Clock::now();
-    // auto t2 = Clock::now();
-    // cin >> a >> b >> c;
-    // t1 = Clock::now();
-    // while(n--)
-    //     expomod(a,b,c);
-    // t2 = Clock::now();
-    // cout << "tiempo: " << chrono::duration_cast<Mili>(t2 - t1).count() << " .ms\n";
-    // cout << "mod: " << expomod(a,b,c) << endl;
+    RSA Receptor;
+    RSA Emisor(Receptor.N, Receptor.e);
 
-    int n = 10;
-    while(n--)
-        cout << primo() << endl;
+    string msg = "G";
+    ZZ msg_cifrado = Emisor.cifrar(msg);
+
+    cout << msg_cifrado << endl;
+    cout << Receptor.descifrar(msg_cifrado) << endl;
 
     return 0;
 }

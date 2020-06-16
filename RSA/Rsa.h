@@ -9,37 +9,61 @@ using namespace std;
 class RSA
 {
 private:
-    ZZ clave_publica;
-    ZZ clave_privada;
-
-    string alf;
+    ZZ d;
 public:
+    string alf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ,.-( )abcdefghijklmnopqrstuvwxyz<>*1234567890";
     RSA();
-    RSA(ZZ pub);
+    RSA(ZZ _N, ZZ _e);
 
-    string cifrar(ZZ msg);
+    ZZ cifrar(string msg);
     string descifrar(ZZ msg);
+
+    ZZ N;
+    ZZ e;
 };
 
 RSA::RSA()
 {
-    ZZ p,q;
+    ZZ p(primo());
+    ZZ q(primo());
 
+    N = p*q;
+    ZZ phi_N = (p-1)*(q-1);  
+
+    srand(time(0));
+    long r = rand();
+    ZZ R = conv<ZZ>(r);
+    e = nmod(R, phi_N);
+
+    while(gcd(e,phi_N) != 1)
+    {
+        e++;
+    }
+    d = inversa(e,phi_N);
 }
 
-RSA::RSA(ZZ pub)
+RSA::RSA(ZZ _N, ZZ _e)
 {
-
+    N = _N;
+    e = _e;
 }
 
-string RSA::cifrar(ZZ msg)
+ZZ RSA::cifrar(string msg)
 {
-    
+    long p = alf.find(msg[0]);
+    ZZ P(p);
+
+    return expomod(P,e,N);
 }
 
 string RSA::descifrar(ZZ msg)
 {
-    
+    ZZ Q = expomod(msg,d,N);
+    long q = conv<long>(Q);
+
+    string msg_des;
+    msg_des += alf[q];
+    return msg_des; 
 }
 
 #endif
