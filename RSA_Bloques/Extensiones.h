@@ -168,4 +168,17 @@ ZZ resto_chino(Vec<ZZ>& a, Vec<ZZ>& p, ZZ &P)
     return xo;
 }
 
+// string toZZ(ZZ num)
+// {
+//     string s;
+
+//     for(int i = num.size(); i; i++)
+//     {
+//         int 
+//         s +=
+//     }
+
+//     return s;
+// }
+
 #endif

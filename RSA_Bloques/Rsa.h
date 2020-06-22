@@ -78,8 +78,12 @@ string RSA::cifrar(string msg)
         {
             bloque += msg2[j];
         }
-        ZZ p = conv<string>(bloque);
-        
+        long long int p = stoi(bloque);
+        ZZ P(p);
+
+        P = expomod(P,e,N);
+
+        msg_cif += 
     }
 
     //long p = alf.find(msg[0]);
