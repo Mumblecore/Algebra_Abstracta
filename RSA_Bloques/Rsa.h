@@ -83,15 +83,10 @@ string RSA::cifrar(string msg)
 
         P = expomod(P,e,N);
 
-        msg_cif += 
+        //msg_cif +=
     }
 
-    //long p = alf.find(msg[0]);
-    //ZZ P(p);
-
-    return msg2;
-
-    //return expomod(P,e,N);
+    return msg_cif;
 }
 
 string RSA::descifrar(string msg)
