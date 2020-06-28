@@ -144,7 +144,7 @@ ZZ inversa(ZZ a, ZZ b)
     return s1;
 }
 
-ZZ resto_chino(Vec<ZZ>& a, Vec<ZZ>& p, ZZ &P)
+ZZ resto_chino(Vec<ZZ> a, Vec<ZZ> p, ZZ &P)
 {
     for(int i = 0; i < p.length(); i++){
         for(int j = i + 1; j < p.length(); j++)
@@ -166,7 +166,7 @@ ZZ resto_chino(Vec<ZZ>& a, Vec<ZZ>& p, ZZ &P)
         q[i] = inversa(Pi[i], p[i]);
         xo += a[i] * Pi[i] * q[i];
     }
-    
+
     xo = nmod(xo, P);
 
     return xo;
