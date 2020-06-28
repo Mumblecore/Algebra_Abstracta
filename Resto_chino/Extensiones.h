@@ -166,8 +166,7 @@ ZZ resto_chino(Vec<ZZ>& a, Vec<ZZ>& p, ZZ &P)
         q[i] = inversa(Pi[i], p[i]);
         xo += a[i] * Pi[i] * q[i];
     }
-
-
+    
     xo = nmod(xo, P);
 
     return xo;
