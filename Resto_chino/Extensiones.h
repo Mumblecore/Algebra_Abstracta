@@ -144,8 +144,9 @@ ZZ inversa(ZZ a, ZZ b)
     return s1;
 }
 
-ZZ resto_chino(Vec<ZZ> a, Vec<ZZ> p, ZZ &P)
+ZZ resto_chino(Vec<ZZ> a, Vec<ZZ> p)
 {
+    ZZ P(1);
     for(int i = 0; i < p.length(); i++){
         for(int j = i + 1; j < p.length(); j++)
             if(gcd(p[i], p[j]) > 1){

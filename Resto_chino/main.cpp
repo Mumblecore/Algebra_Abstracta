@@ -38,12 +38,10 @@ int main()
         cout << "x = " << a[i] << " mod " << p[i] << "\n";
         j++;
     }
-//este ZZ almacenara el P resultante
-    ZZ P(1);
-//imprimimos tanto el X resultante como P
-    resto_chino(a,p,P);
-    P = 1;
-    cout << "\nX = " << resto_chino(a,p,P) << " + " << P << "k\n";
+
+//imprimimos X
+    resto_chino(a,p);
+    cout << "\nX = " << resto_chino(a,p) << endl;
 
     return 0;
 }
