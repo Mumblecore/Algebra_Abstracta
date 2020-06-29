@@ -12,7 +12,6 @@ typedef std::chrono::nanoseconds Nano;
 
 using namespace NTL;
 
-
 ZZ nmod(ZZ a, ZZ n)
 {
     return a - a/n * n;
@@ -115,7 +114,7 @@ ZZ inversa(ZZ a, ZZ b)
     ZZ r2(b);
     while(r2 > 0)
     {
-        div(q, a, r2);
+        q = a/r2;
         mul(t, q, r2);
         sub(t, a, t);
         a = r2;
