@@ -7,8 +7,31 @@
 #include <mach/mach_host.h>
 #include <mach/vm_map.h>
 
-
 using namespace std;
+
+string StdoutFromTerminal(string cmd) {
+
+    string data;
+    FILE * stream;
+    const int max_buffer = 256;
+    char buffer[max_buffer];
+    cmd.append(" 2>&1");
+
+    stream = popen(cmd.c_str(), "r");
+    if (stream) {
+        while (!feof(stream))
+            if (fgets(buffer, max_buffer, stream) != NULL) data.append(buffer);
+                pclose(stream);
+    }
+    return data;
+}
+
+ZZ stringToZZ(string str)
+{
+    ZZ z;
+    istringstream(str) >> z;
+    return z;
+}
 
 static unsigned long long _previousTotalTicks = 0;
 static unsigned long long _previousIdleTicks = 0;
@@ -40,6 +63,15 @@ float GetCPULoad()
    else return -1.0f;
 }
 
+ZZ ZZCPULoad()
+{
+   float f = GetCPULoad();
+   f *= 1000000;
+   ZZ F(conv<ZZ>((int)f));
+   //debido a que la variacion de esta variable se ve solo en los ultimos dos digitos
+   return nmod(F, ZZ(100));
+}
+
 static double ParseMemValue(const char * b)
 {
    while((*b)&&(isdigit(*b) == false)) b++;
@@ -47,7 +79,7 @@ static double ParseMemValue(const char * b)
 }
 
 // Returns a number between 0.0f and 1.0f, with 0.0f meaning all RAM is available, and 1.0f meaning all RAM is currently in use
-float GetSystemMemoryUsagePercentage()
+ZZ GetSystemMemoryUsagePercentage()
 {
    FILE * fpIn = popen("/usr/bin/vm_stat", "r");
    if (fpIn)
@@ -68,8 +100,26 @@ float GetSystemMemoryUsagePercentage()
          else if (strncmp(buf, "Mach Virtual Memory Statistics", 30) != 0) break;  // Stop at "Translation Faults", we don't care about anything at or below that
       }
       pclose(fpIn);
-
-      if (totalPages > 0.0) return (float) (pagesUsed/totalPages);
+      //edito el valor para poder usarlo
+      if (totalPages > 0.0){
+         float f = (float) (pagesUsed/totalPages);
+         f*=1000000;
+         return ZZ((conv<ZZ>((int)f)));
+      }
    }
-   return -1.0f;  // indicate failure
+   return ZZ(-1);  // indicate failure
+}
+
+void AddLoadAverage(Vec<ZZ> &K)
+{
+   string n;
+   string c = StdoutFromTerminal("iostat");
+   for(int i = 2; i < 16; i++)
+      if(c[c.size() - i] != '.')
+            n += c[c.size() - i];
+   for(int i = 0; i < 3; i++){
+      string a(n, i*4, 3);
+      K[i] = stringToZZ(a);
+   }
+   cout << endl;
 }
