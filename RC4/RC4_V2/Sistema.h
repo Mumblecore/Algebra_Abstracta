@@ -123,6 +123,7 @@ void AddLoadAverage(Vec<ZZ> &K)
    }
 }
 
+//esta la hice yo
 ZZ GetWifiRedsInfo()
 {
    system("system_profiler SPAirPortDataType > wifi_info.txt");
