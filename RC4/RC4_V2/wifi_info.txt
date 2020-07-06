@@ -1,0 +1,105 @@
+Wi-Fi:
+
+      Software Versions:
+          CoreWLAN: 13.0 ((null))
+          CoreWLANKit: 13.0 ((null))
+          Menu Extra: 13.0 ((null))
+          System Information: 12.0 (1500)
+          IO80211 Family: 12.0 (1200.12.2b1)
+          Diagnostics: 1.0 (910)
+          AirPort Utility: Not Installed
+      Interfaces:
+        en0:
+          Card Type: AirPort Extreme  (0x14E4, 0x117)
+          Firmware Version: Broadcom BCM43xx 1.0 (7.77.111.1 AirPortDriverBrcmNIC-1610.1)
+          MAC Address: a4:d1:8c:cc:28:f0
+          Locale: FCC
+          Country Code: US
+          Supported PHY Modes: 802.11 a/b/g/n/ac
+          Supported Channels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 149, 153, 157, 161, 165
+          Wake On Wireless: Supported
+          AirDrop: Supported
+          AirDrop Channel: 149
+          Auto Unlock: Supported
+          Status: Connected
+          Current Network Information:
+            MOVISTAR_4B00:
+              PHY Mode: 802.11n
+              BSSID: fc:5a:1d:8b:4b:08
+              Channel: 1
+              Country Code: US
+              Network Type: Infrastructure
+              Security: WPA/WPA2 Personal
+              Signal / Noise: -53 dBm / -98 dBm
+              Transmit Rate: 145
+              MCS Index: 15
+          Other Local Wi-Fi Networks:
+            Angela Miyagui:
+              PHY Mode: 802.11n
+              BSSID: fc:5a:1d:74:cc:28
+              Channel: 11
+              Country Code: US
+              Network Type: Infrastructure
+              Security: WPA/WPA2 Personal
+              Signal / Noise: -80 dBm / 0 dBm
+            EAP110-00:
+              PHY Mode: 802.11n
+              BSSID: 18:a6:f7:b9:0d:ff
+              Channel: 3
+              Network Type: Infrastructure
+              Security: WPA/WPA2 Personal
+              Signal / Noise: -92 dBm / 0 dBm
+            MOVISTAR_1F40:
+              PHY Mode: 802.11n
+              BSSID: fc:5a:1d:2d:1f:48
+              Channel: 11
+              Country Code: US
+              Network Type: Infrastructure
+              Security: WPA/WPA2 Personal
+              Signal / Noise: -88 dBm / 0 dBm
+            MOVISTAR_9D90:
+              PHY Mode: 802.11n
+              BSSID: fc:5a:1d:11:9d:98
+              Channel: 1
+              Country Code: US
+              Network Type: Infrastructure
+              Security: WPA/WPA2 Personal
+              Signal / Noise: -88 dBm / 0 dBm
+            RBOBAL:
+              PHY Mode: 802.11n
+              BSSID: 84:aa:9c:de:74:92
+              Channel: 6
+              Country Code: PE
+              Network Type: Infrastructure
+              Security: WPA/WPA2 Personal
+              Signal / Noise: -88 dBm / 0 dBm
+            TP-LINK_A3E2:
+              PHY Mode: 802.11n
+              BSSID: ec:08:6b:bc:a3:e2
+              Channel: 6
+              Network Type: Infrastructure
+              Security: WPA/WPA2 Personal
+              Signal / Noise: -89 dBm / 0 dBm
+            TP-LINK_AP_1404:
+              PHY Mode: 802.11n
+              BSSID: 18:d6:c7:83:14:04
+              Channel: 6,-1
+              Network Type: Infrastructure
+              Security: WPA2 Personal
+              Signal / Noise: -87 dBm / 0 dBm
+            VERONICA:
+              PHY Mode: 802.11g
+              BSSID: 08:6a:0a:60:a7:5d
+              Channel: 1
+              Network Type: Infrastructure
+              Security: WPA Personal
+              Signal / Noise: -80 dBm / -101 dBm
+            WLAN_3C80:
+              PHY Mode: 802.11g
+              BSSID: 64:77:7d:87:3c:88
+              Channel: 6
+              Country Code: US
+              Network Type: Infrastructure
+              Security: WPA Personal
+              Signal / Noise: -88 dBm / 0 dBm
+

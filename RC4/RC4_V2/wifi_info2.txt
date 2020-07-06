@@ -1,0 +1,10 @@
+              Signal / Noise: -53 dBm / -98 dBm
+              Signal / Noise: -80 dBm / 0 dBm
+              Signal / Noise: -92 dBm / 0 dBm
+              Signal / Noise: -88 dBm / 0 dBm
+              Signal / Noise: -88 dBm / 0 dBm
+              Signal / Noise: -88 dBm / 0 dBm
+              Signal / Noise: -89 dBm / 0 dBm
+              Signal / Noise: -87 dBm / 0 dBm
+              Signal / Noise: -80 dBm / -101 dBm
+              Signal / Noise: -88 dBm / 0 dBm
