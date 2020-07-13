@@ -4,24 +4,32 @@ using namespace std;
 
 int main()
 {
-    RSA Receptor(64);
+    int bits;
+    cout << "Nro de bits: ";
+    cin >> bits;
+
+    RSA Receptor(bits);
     RSA Emisor(Receptor.N, Receptor.e);
 
-    string msg;// = "HOLA asfha HJIsfb IUH iuhdushfidsf IHDFIUDSHF siudhfui SIDFUH isudhfuHFSD iudhf 23432-234-35";
+    cout << "Mensaje: ";
+    string msg;
+    cin.ignore();
     getline(cin, msg);
-    string rpta = Emisor.cifrar(msg);
-    cout << "MSG_cifrado: " << rpta << endl;
-    cout << Receptor.descifrar(rpta) << endl;
-    //cout << Receptor.descifrar(rpta) << endl;
-    // auto t1 = Clock::now();
-    // Emisor.cifrar(msg);
-    // auto t2 = Clock::now();
-    // cout << "tiempo: " << chrono::duration_cast<std::chrono::nanoseconds>(t2-t1).count() << endl;
-    // t1 = Clock::now();
-    // cout << primo(n, criba) << endl;
-    // t2 = Clock::now();
 
-    // cout << "tiempo     : " << chrono::duration_cast<std::chrono::seconds>(t2-t1).count() << endl;
+    bool cifrar;
+    cout << "Cifrar(1) o descifrar(0): ";
+    cin >> cifrar;
+
+    if(cifrar)
+        cout << Emisor.cifrar(msg) << endl;
+    else
+        cout << Receptor.descifrar(msg) << endl;
+
+    cout << "Inversa: \n";
+    if(cifrar)
+        cout << Receptor.descifrar(Emisor.cifrar(msg)) << endl;
+    else
+        cout << Emisor.cifrar(Receptor.descifrar(msg)) << endl;
     return 0;
 }
 //g++ -g -O2 -std=c++11 -pthread -march=native main.cpp -o main -lntl -lgmp -lm
