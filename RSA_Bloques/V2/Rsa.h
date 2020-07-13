@@ -22,6 +22,7 @@ public:
     string descifrar(string msg);
 
     ZZ resto_chino(ZZ D);
+    // ZZ resto_chino(ZZ a, ZZ b);
 
     ZZ N;
     ZZ e;
@@ -45,14 +46,14 @@ RSA::RSA(short bits)
     d = inversa(e,phi_N);
 //Para el resto Chino
     qCp = q * inversa(q, p);
-    pCq = q * inversa(p, q);
+    pCq = p * inversa(p, q);
 
-    cout << "p: " << p << endl;
-    cout << "q: " << q << endl;
-    cout << "N: " << N << endl;
-    cout << "n: " << phi_N << endl;
-    cout << "e: " << e << endl;
-    cout << "d: " << d << endl;
+    // cout << "p: " << p << endl;
+    // cout << "q: " << q << endl;
+    // cout << "N: " << N << endl;
+    // cout << "n: " << phi_N << endl;
+    // cout << "e: " << e << endl;
+    // cout << "d: " << d << endl;
 }
 
 RSA::RSA(ZZ _N, ZZ _e)
@@ -108,10 +109,7 @@ string RSA::descifrar(string msg)
     for(int i = 0, j; i < msg.size(); i += tam_N)
     {
         D = stringToZZ(msg.substr(i, tam_N));
-        cout << "\nINICIO========\n";
         D = resto_chino(D);
-        cout << "\nFINAL========\n";
-
         tmp = ZZtoString(D);
         for(j = tam_N - 1 - tmp.size(); j; j--)
             secuencia += "0";
@@ -134,21 +132,13 @@ ZZ RSA::resto_chino(ZZ D){
     ZZ xp = expomod(zmod(D, p), zmod(d, p - 1), p);
     ZZ xq = expomod(zmod(D, q), zmod(d, q - 1), q);
 
-    cout << "xp: " << xp << endl;
-    cout << "xq: " << xq << endl;
-    cout << "qCp: " << qCp << endl;
-    cout << "pCq: " << pCq << endl;
-    cout << "qCp*xp" << qCp*xp << endl;
-    cout << "pCq*xq" << pCq*xq << endl;
     ZZ x = zmod(qCp*xp + pCq*xq, N);
-    cout << "Resto Chino x: " << x << endl;
-    cout << "Exponenci mod: " << expomod(D, d, N) << endl;
 
     return x;
 }
 
 // ZZ RSA::resto_chino(Vec<ZZ> a, Vec<ZZ> p){
-//     // Resto Chino modificado =======================================================+
+//     // Resto Chino NORMAL =======================================================+
 //     ZZ P(1);
 //     for(int i = 0; i < p.length(); i++)
 //         P *= p[i];
