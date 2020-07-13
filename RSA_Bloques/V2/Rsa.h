@@ -21,9 +21,6 @@ public:
     string cifrar(string msg);
     string descifrar(string msg);
 
-    ZZ resto_chino(ZZ D);
-    // ZZ resto_chino(ZZ a, ZZ b);
-
     ZZ N;
     ZZ e;
 };
@@ -105,11 +102,15 @@ string RSA::descifrar(string msg)
 
     int tam_N = ZZtoString(N).size();
 
-    ZZ D;
+    ZZ D, Dp, Dq;
     for(int i = 0, j; i < msg.size(); i += tam_N)
     {
         D = stringToZZ(msg.substr(i, tam_N));
-        D = resto_chino(D);
+        // Resto Chino modificado =======================================================+
+        Dp = expomod(zmod(D, p), zmod(d, p - 1), p);
+        Dq = expomod(zmod(D, q), zmod(d, q - 1), q);
+        D = zmod(qCp*Dp + pCq*Dq, N);
+        // Fin Resto Chino modificado ===================================================+
         tmp = ZZtoString(D);
         for(j = tam_N - 1 - tmp.size(); j; j--)
             secuencia += "0";
@@ -126,16 +127,16 @@ string RSA::descifrar(string msg)
     return output;
 }
 
-ZZ RSA::resto_chino(ZZ D){
-    // Resto Chino modificado =======================================================+
+// ZZ RSA::resto_chino(ZZ D){
+//     // Resto Chino como funcion ==================================================+
 
-    ZZ xp = expomod(zmod(D, p), zmod(d, p - 1), p);
-    ZZ xq = expomod(zmod(D, q), zmod(d, q - 1), q);
+//     ZZ xp = expomod(zmod(D, p), zmod(d, p - 1), p);
+//     ZZ xq = expomod(zmod(D, q), zmod(d, q - 1), q);
 
-    ZZ x = zmod(qCp*xp + pCq*xq, N);
+//     ZZ x = zmod(qCp*xp + pCq*xq, N);
 
-    return x;
-}
+//     return x;
+// }
 
 // ZZ RSA::resto_chino(Vec<ZZ> a, Vec<ZZ> p){
 //     // Resto Chino NORMAL =======================================================+
