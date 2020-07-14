@@ -66,7 +66,7 @@ string RSA::cifrar(string msg)
     for(int i = 0, pos; i < msg.size(); i++)
     {
         pos = alf.find(msg[i]);
-        if(pos < 10)
+        for(short j = alf_dgts - to_string(pos).size(); j; j--)
             secuencia += "0";
         secuencia += to_string(pos);
     }
@@ -117,7 +117,7 @@ string RSA::descifrar(string msg)
         secuencia += tmp;
     }
 
-    for(int i = 0, pos; i < secuencia.size(); i += alf_dgts){
+    for(int i = 0, pos; i < secuencia.size()-1; i += alf_dgts){
         pos = stoi(secuencia.substr(i, alf_dgts));
         if(pos == 22)
             break;
