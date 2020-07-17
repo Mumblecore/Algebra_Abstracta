@@ -145,7 +145,7 @@ string RSA::cifrar_y_firmar(string msg)
         secuencia += tmp;
     }
     ZZ D, Dp, Dq;
-    string tmp;
+    string tmp_r;
     for(int i = 0, j; i < secuencia.size(); i += tam_bloque)
     {
         D = stringToZZ(secuencia.substr(i, tam_bloque));
@@ -154,16 +154,34 @@ string RSA::cifrar_y_firmar(string msg)
         Dq = expomod(zmod(D, q), zmod(d, q - 1), q);
         D = zmod(qCp*Dp + pCq*Dq, N);
         // Fin Resto Chino modificado ===================================================+
-        tmp = ZZtoString(D);
-        for(j = tam_bloque + 1 - tmp.size(); j; j--)
+        tmp_r = ZZtoString(D);
+        for(j = tam_bloque + 1 - tmp_r.size(); j; j--)
             r += "0";
-        r += tmp;
+        r += tmp_r;
     }
 
 // Creacion de la firma:
-    //string s;
+    string s, tmp_s;
 
-    return c + '#' + r;
+    tam_bloque = ZZtoString(_N).size() - 1;
+    falta = imod(r.size(), tam_bloque);
+    if(falta){                          //completar con 2, 22 es W
+        string tmp(tam_bloque - falta, '2');
+        r += tmp;
+    }
+
+    ZZ C;
+    for(int i = 0, j; i < r.size(); i += tam_bloque)
+    {
+        C = stringToZZ(r.substr(i, tam_bloque));
+        C = expomod(C, _e, _N);
+
+        tmp_s = ZZtoString(C);
+        for(j = (tam_bloque + 1) - tmp_s.size(); j; j--)
+            s += "0";
+        s += tmp_s;
+    }
+    return c + '#' + s;
 }
 
 string RSA::descifrar_y_confirmar(string par_cs)
@@ -176,15 +194,41 @@ string RSA::descifrar_y_confirmar(string par_cs)
             break;
         msg += par_cs[i];
     }
-    string sec_r = par_cs.substr(msg.size()+1);
+    string sec_s = par_cs.substr(msg.size()+1);
     msg = descifrar(msg);
-// Comprobar la rubrica:
-    int tam_bloque = ZZtoString(_N).size();
-    string r, output, tmp;
-    ZZ C;
-    for(int i = 0, j; i < sec_r.size(); i += tam_bloque)
+// Descifrar la firma:
+    string s;
+    string secuencia, tmp;
+
+    int tam_N = ZZtoString(N).size();
+
+    ZZ D, Dp, Dq;
+    for(int i = 0, j; i < sec_s.size(); i += tam_N)
     {
-        C = stringToZZ(sec_r.substr(i, tam_bloque));
+        D = stringToZZ(sec_s.substr(i, tam_N));
+        // Resto Chino modificado =======================================================+
+        Dp = expomod(zmod(D, p), zmod(d, p - 1), p);
+        Dq = expomod(zmod(D, q), zmod(d, q - 1), q);
+        D = zmod(qCp*Dp + pCq*Dq, N);
+        // Fin Resto Chino modificado ===================================================+
+        tmp = ZZtoString(D);
+        for(j = tam_N - 1 - tmp.size(); j; j--)
+            s += "0";
+        s += tmp;
+    }
+
+    string ns;
+    int tam_bloque = ZZtoString(_N).size();
+    for(int i = 0; i < s.size() - tam_N; i += tam_N){
+        ns+= s.substr(i, tam_bloque);
+    }
+    
+// Comprobar la rubrica:
+    string r, output;
+    ZZ C;
+    for(int i = 0, j; i < ns.size(); i += tam_bloque)
+    {
+        C = stringToZZ(ns.substr(i, tam_bloque));
         C = expomod(C, _e, _N);
 
         tmp = ZZtoString(C);
@@ -198,10 +242,13 @@ string RSA::descifrar_y_confirmar(string par_cs)
             break;
         r += alf[pos];
     }
+    cout << "r: " << r << endl;
 
-
-
-    return msg + '*' + r;
+// Output
+    if(msg == r)
+        return msg;
+    else
+        return "El mensaje no es del destinatario";
 }
 
 #endif
