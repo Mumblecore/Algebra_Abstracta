@@ -136,9 +136,9 @@ string RSA::cifrar_y_firmar(string msg)
             secuencia += "0";
         secuencia += to_string(pos);
     }
+    cout << "r: " << secuencia << endl;
     //el mensaje puede caber o no, asi que hago que quepa en bloques de N-1
     int tam_bloque = ZZtoString(N).size() - 1;
-
     int falta = imod(secuencia.size(), tam_bloque);
     if(falta){                          //completar con 2, 22 es W
         string tmp(tam_bloque - falta, '2');
@@ -162,12 +162,12 @@ string RSA::cifrar_y_firmar(string msg)
 
 // Creacion de la firma:
     string s, tmp_s;
-
+    
     tam_bloque = ZZtoString(_N).size() - 1;
     falta = imod(r.size(), tam_bloque);
-    if(falta){                          //completar con 2, 22 es W
-        string tmp(tam_bloque - falta, '2');
-        r += tmp;
+    if(falta){                          //completar con 0s a la izquierda
+        string tmp(tam_bloque - falta, '0');
+        r = tmp + r;
     }
 
     ZZ C;
@@ -201,7 +201,6 @@ string RSA::descifrar_y_confirmar(string par_cs)
     string secuencia, tmp;
 
     int tam_N = ZZtoString(N).size();
-
     ZZ D, Dp, Dq;
     for(int i = 0, j; i < sec_s.size(); i += tam_N)
     {
@@ -217,11 +216,16 @@ string RSA::descifrar_y_confirmar(string par_cs)
         s += tmp;
     }
 
-    string ns;
-    int tam_bloque = ZZtoString(_N).size();
-    for(int i = 0; i < s.size() - tam_N; i += tam_N){
-        ns+= s.substr(i, tam_bloque);
+    tam_N = ZZtoString(_N).size();
+    string ns = ZZtoString(stringToZZ(s));
+
+    int falta = imod(ns.size(), tam_N);
+    if(falta){                          //completar con 0s
+        string tmp(tam_N - falta, '0');
+        ns = tmp + ns;
     }
+
+    int tam_bloque = ZZtoString(_N).size();
     
 // Comprobar la rubrica:
     string r, output;
@@ -242,7 +246,6 @@ string RSA::descifrar_y_confirmar(string par_cs)
             break;
         r += alf[pos];
     }
-    cout << "r: " << r << endl;
 
 // Output
     if(msg == r)

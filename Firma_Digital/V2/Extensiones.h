@@ -34,6 +34,8 @@ int imod(int a, int b){return a - a/b * b;}
 
 ZZ expomod(ZZ a, ZZ m, ZZ n)
 {
+    if(a == ZZ(0))
+        return ZZ(0);
     ZZ res(1);
 
     while(m!=0)
